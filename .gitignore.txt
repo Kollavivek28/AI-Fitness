@@ -1,0 +1,13 @@
+# Ignore all environment files
+.env
+*.env
+backend/.env
+frontend/.env
+
+# Node
+node_modules/
+dist/
+build/
+
+# Python cache (if backend uses Python)
+__pycache__/

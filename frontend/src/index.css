@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #0f172a;
+  background-color: #f6f7fb;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(108, 99, 255, 0.18), transparent 60%),
+    radial-gradient(circle at 20% 20%, rgba(0, 191, 166, 0.15), transparent 45%),
+    #f5f7ff;
+}
+
+body.dark {
+  background: radial-gradient(circle at top, rgba(108, 99, 255, 0.22), transparent 65%),
+    radial-gradient(circle at 20% 20%, rgba(0, 191, 166, 0.2), transparent 45%),
+    #050816;
+  color: #e2e8f0;
+}
+
+.glass-panel {
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(148, 163, 184, 0.25);
+  color: #e2e8f0;
+}
+
+.aurora {
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 120deg, rgba(108, 99, 255, 0.45), rgba(0, 191, 166, 0.5), rgba(255, 101, 132, 0.45), rgba(108, 99, 255, 0.45));
+  animation: pulse 16s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+}
+
+@keyframes pulse {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(8deg) scale(1.2);
+  }
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-2 text-sm text-slate-700 outline-none transition focus:border-brand-primary focus:bg-white focus:ring-2 focus:ring-brand-primary/30 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100;
+  }
+  .dark .input {
+    @apply bg-slate-900/80;
+  }
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-transparent bg-gradient-to-r from-brand-primary to-brand-secondary px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-primary/30 transition hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-50;
+  }
+  .pill.secondary {
+    @apply bg-white text-slate-900 border-slate-200 dark:bg-slate-800 dark:text-white;
+  }
+  .pill.accent {
+    @apply bg-brand-accent text-white;
+  }
+}
